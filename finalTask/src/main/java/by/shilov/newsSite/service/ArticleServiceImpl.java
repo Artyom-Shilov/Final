@@ -8,6 +8,7 @@ import by.shilov.newsSite.domain.ArticleStatus;
 import by.shilov.newsSite.exception.DaoException;
 import by.shilov.newsSite.exception.ServiceException;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,15 @@ public class ArticleServiceImpl extends ServiceImpl implements ArticleService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    public List<String> receiveCategoriesList(){
+        List<String> categoriesList = new ArrayList<>();
+        ArticleCategory[] categoriesArray = ArticleCategory.values();
+        for (ArticleCategory category : categoriesArray){
+            categoriesList.add(category.toString());
+        }
+        return categoriesList;
     }
 
     @Override

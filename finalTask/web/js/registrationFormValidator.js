@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     $('#loginForm').submit(function (e) {
         e.preventDefault();
@@ -17,5 +16,4 @@ $(document).ready(function () {
         }
         if (valid) this.submit();
     });
-
 });

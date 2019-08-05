@@ -3,17 +3,11 @@ package by.shilov.newsSite.action;
 import by.shilov.newsSite.domain.*;
 import by.shilov.newsSite.exception.ActionException;
 import by.shilov.newsSite.service.ArticleService;
+import by.shilov.newsSite.service.ArticleServiceImpl;
 import by.shilov.newsSite.service.ServiceNames;
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.IOUtils;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -36,6 +30,9 @@ public class WriteArticleAction extends Action {
                 request.getRequestDispatcher(ERROR_PAGE_FILE).forward(request, response);
             }*/
             if (request.getMethod().equals("GET")){
+                ArticleServiceImpl articleService = factory.getService(ServiceNames.ARTICLE_SERVICE);
+                List<String> categories = articleService.receiveCategoriesList();
+                request.setAttribute("categories", categories);
                 request.getRequestDispatcher(FORWARDED_PAGE).forward(request, response);
             }
             if (request.getMethod().equals("POST")) {
@@ -48,18 +45,20 @@ public class WriteArticleAction extends Action {
                     if (fileItemTemp.isFormField()) {
                         if (fileItemTemp.getFieldName().equals("articleTitle")){
                             article.setTitle(fileItemTemp.getString());
-                            System.out.println(fileItemTemp.getString());
                         }
                        if (fileItemTemp.getFieldName().equals("articleText")){
                            article.setText(fileItemTemp.getString());
-                           System.out.println(fileItemTemp.getString());
                        }
+                        if (fileItemTemp.getFieldName().equals("category")){
+                            article.setCategory(ArticleCategory.getCategoryByString(fileItemTemp.getString()));
+                        }
                        if (fileItemTemp.getFieldName().equals("markText")){
-                           System.out.println(fileItemTemp.getString());
-                       }
+
+                        }
                     } else
                         if (fileItemTemp.getFieldName().equals("file")) {
-                            if (fileItemTemp.getName()!= null) {
+                            if (fileItemTemp.getName()!= null && !fileItemTemp.getName().isEmpty()) {
+                                System.out.println(fileItemTemp.getName().length());
                                 String name = new File(fileItemTemp.getName()).getName();
                                 fileItemTemp.write(new File(UPLOAD_DIRECTORY + File.separator + name));
                                 article.setImageUrl(UPLOAD_DIRECTORY + File.separator + name);

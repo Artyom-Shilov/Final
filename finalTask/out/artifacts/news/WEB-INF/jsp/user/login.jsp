@@ -4,15 +4,12 @@
 
 <c:url value="/user_login.html" var="LoginActionUrl"/>
 <c:url value="/user_register.html" var = "RegisterActionUrl"/>
-
-
+<c:url value="/js" var="javascriptUrl"/>
+<html>
 <head>
-    <%@ include file="/WEB-INF/jsp/layout.jsp" %>
-    <title><fmt:message key="login"/></title>
+    <title>Login</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        <%@include file="/WEB-INF/js/loginFormValidator.js"%>
-    </script>
+    <script type="text/javascript" src="${javascriptUrl}/loginFormValidator.js"></script>
     <style type="text/css">
         .login-form {
             width: 340px;
@@ -38,8 +35,8 @@
     </style>
 </head>
 
-
-
+<body>
+<%@ include file="/WEB-INF/jsp/layout.jsp" %>
 <div class="login-form">
     <form action="${LoginActionUrl}" method="post" id = loginForm>
         <div class="form-group">
@@ -57,8 +54,8 @@
     </form>
     <p class="text-center"><a href="${RegisterActionUrl}"><fmt:message key="createAccount"/></a></p>
 </div>
-
-
+</body>
+</html>
 
 
 

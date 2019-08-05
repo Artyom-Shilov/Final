@@ -14,6 +14,8 @@ public interface ArticleService extends Service {
 
     Integer receiveNumberOfRowsByCategory(String category) throws ServiceException;
 
+    public List<String> receiveCategoriesList();
+
     List<Article> findAll() throws ServiceException;
 
     Article findArticleById(Integer id) throws ServiceException;

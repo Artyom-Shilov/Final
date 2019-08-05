@@ -17,7 +17,7 @@ import java.util.List;
 public class NewsByCategoryAction extends Action {
     private final String FORWARDED_PAGE = "/WEB-INF/jsp/article/articlesByCategory.jsp";
 
-    private final int RECORDS_ON_PAGE = 2;
+    private final int RECORDS_ON_PAGE = 4;
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ActionException {

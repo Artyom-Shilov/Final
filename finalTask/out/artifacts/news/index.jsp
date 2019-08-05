@@ -4,7 +4,10 @@
 <html>
 <head>
   <title>News Site</title>
-  <c:import url="WEB-INF/jsp/layout.jsp"/>
 </head>
+
+<body>
+<c:import url="WEB-INF/jsp/layout.jsp"/>
+</body>
 </html>
 

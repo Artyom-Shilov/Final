@@ -3,9 +3,9 @@
 
 <c:url value="/read_article_comments.html" var="readArticleCommentsUrl"/>
 
+<html>
 <head>
     <title>Articles</title>
-    <%@ include file="/WEB-INF/jsp/layout.jsp" %>
     <style type="text/css">
         .jumbotron {
             padding-top: 6rem;
@@ -26,6 +26,8 @@
     </style>
 </head>
 
+<body>
+<%@ include file="/WEB-INF/jsp/layout.jsp" %>
 <section class="jumbotron text-center">
     <div class="container">
         <h2 class="jumbotron-heading">${article.title}</h2>
@@ -44,3 +46,5 @@
         <button type="submit" class="btn btn-primary btn-lg">Комментарии(${commentsNumber})</button>
     </form>
 </section>
+</body>
+</html>

@@ -4,12 +4,15 @@
 
 <c:url value="/write_article.html" var="writeArticleUrl"/>
 
-
+<html>
 <head>
-<%@ include file="/WEB-INF/jsp/layout.jsp" %>
     <title>Cabinet</title>
 </head>
+<body>
+<%@ include file="/WEB-INF/jsp/layout.jsp" %>
 <a href="${writeArticleUrl}">
 <div>Написать статью</div>
 </a>
+</body>
+</html>
 

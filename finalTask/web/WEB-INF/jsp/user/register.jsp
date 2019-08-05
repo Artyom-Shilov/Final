@@ -4,10 +4,10 @@
 
 <c:url value="/user_register.html" var="RegisterActionUrl"/>
 
-
+<html>
 <head>
     <%@ include file="/WEB-INF/jsp/layout.jsp" %>
-    <title><fmt:message key="registration"/></title>
+    <title>Registration</title>
 
     <style type="text/css">
         .login-form {
@@ -34,7 +34,8 @@
     </style>
 </head>
 
-
+<body>
+<%@ include file="/WEB-INF/jsp/layout.jsp" %>
 <div class="login-form">
     <form action="${RegisterActionUrl}" method="post">
         <div class="form-group">
@@ -57,6 +58,8 @@
         </div>
     </form>
 </div>
+</body>
+</html>
 
 
 
